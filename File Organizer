@@ -1,0 +1,21 @@
+import os
+import shutil
+
+def organize_files(directory):
+    if not os.path.isdir(directory):
+        print("Invalid directory!")
+        return
+
+    for filename in os.listdir(directory):
+        file_path = os.path.join(directory, filename)
+        if os.path.isfile(file_path):
+            extension = filename.split('.')[-1]
+            folder_path = os.path.join(directory, extension)
+            if not os.path.exists(folder_path):
+                os.makedirs(folder_path)
+            shutil.move(file_path, folder_path)
+
+if __name__ == "__main__":
+    directory = input("Enter the directory path to organize: ")
+    organize_files(directory)
+    print("Files organized by their extensions.")
