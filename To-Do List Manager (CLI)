@@ -1,0 +1,39 @@
+todo_list = []
+
+def add_task(task):
+    todo_list.append(task)
+
+def remove_task(task):
+    if task in todo_list:
+        todo_list.remove(task)
+    else:
+        print("Task not found!")
+
+def view_tasks():
+    if len(todo_list) == 0:
+        print("No tasks in the list.")
+    else:
+        print("Your to-do list:")
+        for i, task in enumerate(todo_list, 1):
+            print(f"{i}. {task}")
+
+def todo_manager():
+    while True:
+        print("\n1. Add Task\n2. Remove Task\n3. View Tasks\n4. Exit")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            task = input("Enter the task: ")
+            add_task(task)
+        elif choice == '2':
+            task = input("Enter the task to remove: ")
+            remove_task(task)
+        elif choice == '3':
+            view_tasks()
+        elif choice == '4':
+            break
+        else:
+            print("Invalid choice!")
+
+if __name__ == "__main__":
+    todo_manager()
